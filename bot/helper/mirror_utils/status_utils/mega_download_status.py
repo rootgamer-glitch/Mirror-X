@@ -5,10 +5,11 @@ from .status import Status
 
 class MegaDownloadStatus(Status):
 
-    def __init__(self, obj,listener):
+    def __init__(self, obj, listener):
         self.uid = obj.uid
         self.listener = listener
         self.obj = obj
+        self.message = listener.message
 
     def name(self) -> str:
         return self.obj.name
@@ -22,7 +23,6 @@ class MegaDownloadStatus(Status):
     def progress(self):
         """Progress of download in percentage"""
         return f"{self.progress_raw()}%"
-       
 
     def status(self) -> str:
         return MirrorStatus.STATUS_DOWNLOADING
